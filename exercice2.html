@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accordéon de Pokemons</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .accordion-container {
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .accordion {
+      width: 100%;
+      background: #eee;
+      cursor: pointer;
+      padding: 15px;
+      text-align: left;
+      outline: none;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      gap: 10px;
+      border: none;
+      box-sizing: border-box;
+    }
+    .accordion.active {
+      background: #007BFF;
+      color: #fff;
+    }
+    .accordion::before {
+      content: "▶";
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 12px;
+      transition: transform 0.4s;
+    }
+    .accordion.active::before {
+      transform: rotate(90deg);
+    }
+    .panel {
+      display: none;
+      padding: 20px;
+      background: #fff;
+      box-sizing: border-box;
+      border-top: 1px solid #ccc;
+    }
+    .content {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .content img {
+      width: 40%;
+      max-width: 100%;
+      height: auto;
+    }
+    .text {
+      width: 55%;
+    }
+    @media (max-width: 600px) {
+      .content {
+        flex-direction: column;
+      }
+      .content img, .text {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="accordion-container">
+  <button class="accordion">Dracaufeu</button>
+  <div class="panel">
+    <div class="content">
+      <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png" alt="Dracaufeu">
+      <div class="text">
+        <p>Quand Dracaufeu s’énerve réellement, la flamme au bout de sa queue devient bleue.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="accordion-container">
+  <button class="accordion">Pikachu</button>
+  <div class="panel">
+    <div class="content">
+      <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png" alt="Pikachu">
+      <div class="text">
+        <p>Quand il s’énerve, il libère instantanément l’énergie emmagasinée dans les poches de ses joues.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $(".accordion").click(function(){
+    $(this).toggleClass("active");
+    $(this).next(".panel").slideToggle();
+  });
+});
+</script>
+
+</body>
+</html>
